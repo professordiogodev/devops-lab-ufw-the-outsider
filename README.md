@@ -1,6 +1,4 @@
-# Firewall: Default Deny, One Rule at a Time
-
-A port scan from "the internet" finds five open doors on your server, including the database. Close them all, open exactly what is needed, and prove it from the outside.
+<p align="center"><img src="assets/banner.svg" alt="Firewall: Default Deny, One Rule at a Time" width="100%"></p>
 
 | | |
 |-|-|
@@ -17,9 +15,10 @@ A port scan from "the internet" finds five open doors on your server, including 
 5. Commit and push. Open the **Actions** tab of your fork (click *I understand my workflows, go ahead and enable them* the first time). The **Lab check** shows what is still missing.
 6. When the check is green, **submit the URL of your fork** in the course platform.
 
+> [!NOTE]
 > The check only looks at your answers and any files the lab asks you to commit. Your instructor reads your work and may ask you to explain any line.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## The situation
 
@@ -27,6 +26,7 @@ Friday, 16:30. The security team ran a port scan against the Clipstr server from
 
 Nobody has configured a firewall on this machine. You will, with `ufw`, from the inside, while watching the result from the outside.
 
+> [!IMPORTANT]
 > **Your mission**
 > - Scan the server like an attacker and see what is exposed
 > - Build a policy: **default deny**, then open only what each audience needs
@@ -35,7 +35,7 @@ Nobody has configured a firewall on this machine. You will, with `ufw`, from the
 
 **Time:** 45-60 min | **Cost:** free | **You need:** your Ubuntu environment with `sudo`. The lab builds two small virtual networks on your machine; `sudo ./teardown.sh` removes them.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 0 - Set the scene
 
@@ -47,7 +47,7 @@ sudo ./setup.sh
 
 You now have three "places": **this machine** is the server (`10.77.0.1` and `10.78.0.1`), `outsider` (`10.77.0.2`) plays the open internet, and `office` (`10.78.0.2`) plays your trusted office. Scripts let you look at the server from each place.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 1 - Recon: be the attacker
 
@@ -63,9 +63,10 @@ sudo ufw status verbose
 3. What does `ss -ltnp` show about the *address* each service listens on (`0.0.0.0` vs `127.0.0.1`)? Why is a firewall still useful if a service listens only on localhost, and why is it not enough if it listens on `0.0.0.0`?
 4. Is `ufw` active now?
 
+> [!NOTE]
 > **Predict** Which ports do you expect to be open from the outsider? Is the database among them? Then check with the scan.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 2 - The policy
 
@@ -84,6 +85,7 @@ sudo ./session.sh start
 sudo ./session.sh status
 ```
 
+> [!NOTE]
 > **Predict** You are about to turn on a firewall whose default is *deny incoming* **without** any rule for port 2200. What happens to the session that is already open? What happens if the office tries to open a *new* one? Write your two answers.
 
 Now build it in this order (the order is the point):
@@ -95,9 +97,10 @@ Now build it in this order (the order is the point):
 
 After step 4 check `sudo ./session.sh status`, then try `sudo ./session.sh start` again (it opens a new connection).
 
+> [!WARNING]
 > **Break it** What would have happened on a **cloud server** if you had enabled the firewall first and then typed the rule for your own SSH port? Describe the recovery options on AWS when you lock yourself out.
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 3 - Prove it from the outside
 
@@ -114,7 +117,7 @@ Save your rules for the record:
 sudo ufw status numbered | tee ufw-rules.txt
 ```
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Part 4 - Verify
 
@@ -122,7 +125,7 @@ sudo ufw status numbered | tee ufw-rules.txt
 sudo ./verify.sh
 ```
 
----
+<p align="center"><img src="assets/divider.svg" alt="" width="100%"></p>
 
 ## Level up (optional)
 
