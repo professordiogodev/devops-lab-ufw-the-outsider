@@ -18,14 +18,14 @@ mk() { # name hostif hostip peerip
 mk outsider vh-out 10.77.0.1 10.77.0.2
 mk office   vh-off 10.78.0.1 10.78.0.2
 
-mkdir -p /var/lib/clipstr-lab; : > /var/lib/clipstr-lab/pids
-start() { setsid nohup python3 services/listener.py "$1" "$2" >/dev/null 2>&1 & echo $! >> /var/lib/clipstr-lab/pids; }
-start 8080 "clipstr-web: hello"
-start 2200 "SSH-2.0-ClipstrFake admin shell"
-start 5432 "postgres: clipstr database"
-start 6379 "redis: clipstr cache"
+mkdir -p /var/lib/clippy-lab; : > /var/lib/clippy-lab/pids
+start() { setsid nohup python3 services/listener.py "$1" "$2" >/dev/null 2>&1 & echo $! >> /var/lib/clippy-lab/pids; }
+start 8080 "clippy-web: hello"
+start 2200 "SSH-2.0-ClippyFake admin shell"
+start 5432 "postgres: clippy database"
+start 6379 "redis: clippy cache"
 start 9100 "metrics: node exporter"
-cp scan.sh /var/lib/clipstr-lab/scan.sh 2>/dev/null || true
+cp scan.sh /var/lib/clippy-lab/scan.sh 2>/dev/null || true
 sleep 1
 echo "Network ready. Server = 10.77.0.1 / 10.78.0.1. outsider = 10.77.0.2, office = 10.78.0.2"
 echo "Try:  sudo ./scan.sh outsider"

@@ -2,7 +2,7 @@
 
 ## The situation
 
-Friday, 16:30. The security team ran a port scan against the Clipstr server from the internet and sent you the result with three words: *"Explain. Fix. Today."* The scan found **five open doors**: the web port (fine), an admin shell, the PostgreSQL database, the Redis cache and a metrics endpoint. Only one of those should be public.
+Friday, 16:30. The security team ran a port scan against the Clippy server from the internet and sent you the result with three words: *"Explain. Fix. Today."* The scan found **five open doors**: the web port (fine), an admin shell, the PostgreSQL database, the Redis cache and a metrics endpoint. Only one of those should be public.
 
 Nobody has configured a firewall on this machine. You will, with `ufw`, from the inside, while watching the result from the outside.
 

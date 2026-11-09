@@ -17,7 +17,7 @@ check "network namespace 'outsider' is gone" bash -c "! ip netns list | grep -q 
 check "network namespace 'office' is gone" bash -c "! ip netns list | grep -q office"
 check "virtual links vh-out and vh-off are gone" bash -c "! ip link show 2>/dev/null | grep -qE 'vh-out|vh-off'"
 check "no lab listener process" no_proc 'services/listener.py'
-check "/var/lib/clipstr-lab is gone" no_path /var/lib/clipstr-lab
+check "/var/lib/clippy-lab is gone" no_path /var/lib/clippy-lab
 
 echo
 if [ "$failn" -eq 0 ]; then echo "TEARDOWN VERIFIED ($pass/$pass)"; else echo "NOT CLEAN: $failn leftover(s). Finish the tear down steps and run this again."; fi
