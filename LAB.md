@@ -2,9 +2,19 @@
 
 ## The situation
 
-Friday, 16:30. The security team ran a port scan against the Clippy server from the internet and sent you the result with three words: *"Explain. Fix. Today."* The scan found **five open doors**: the web port (fine), an admin shell, the PostgreSQL database, the Redis cache and a metrics endpoint. Only one of those should be public.
+```text
+#security                                                     Friday 16:30
+Security : we scanned the Clippy server from the internet. Result attached.
+           Five open doors: web (fine), an admin shell, PostgreSQL,
+           the Redis cache, and a metrics endpoint.
+Security : Explain. Fix. Today.
+You      : Only one of those should be public, right?
+Security : Only one of those should be public.
+You      : There is no firewall on this machine at all.
+Security : ...
+```
 
-Nobody has configured a firewall on this machine. You will, with `ufw`, from the inside, while watching the result from the outside.
+You will fix it with `ufw`, from the inside, while watching the result from the outside, because a firewall rule you have not tested from the attacker's side is only a hope.
 
 > **Your mission**
 > - Scan the server like an attacker and see what is exposed
