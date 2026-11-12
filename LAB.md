@@ -36,6 +36,8 @@ sudo ./setup.sh
 
 You now have three "places": **this machine** is the server (`10.77.0.1` and `10.78.0.1`), `outsider` (`10.77.0.2`) plays the open internet, and `office` (`10.78.0.2`) plays your trusted office. Scripts let you look at the server from each place.
 
+> **Warning** This lab turns on a real firewall with the default *deny incoming* on the machine where you run it. Run it on your own Ubuntu (WSL, OrbStack or a local virtual machine). **Do not run it on a remote or cloud server over SSH**: the firewall will block every new SSH connection and you can lock yourself out. If you must, allow your SSH port on the network card first (`sudo ufw allow in on <your network interface> to any port 22 proto tcp`) **before** you enable the firewall in Part 2.
+
 ---
 
 ## Part 1 - Recon: be the attacker
